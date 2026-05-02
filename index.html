@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - School Facilities</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: white;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            background: white;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .image-label {
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .lightbox img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 28px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .close-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .gallery-item img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏫 School Facilities Gallery</h1>
+        <p>Explore Our Modern Educational Infrastructure</p>
+    </header>
+
+    <div class="container">
+        <!-- Chemistry Lab Section -->
+        <div class="section">
+            <h2 class="section-title">⚗️ Chemistry Lab</h2>
+            <div class="gallery">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="Assets/Chemistry lab.png" alt="Chemistry Lab">
+                    <div class="image-label">Chemistry Lab</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="Assets/Chemistry lab 1.png" alt="Chemistry Lab 1">
+                    <div class="image-label">Chemistry Lab - View 1</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="Assets/Chemistry lab 2.png" alt="Chemistry Lab 2">
+                    <div class="image-label">Chemistry Lab - View 2</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Computer Lab Section -->
+        <div class="section">
+            <h2 class="section-title">💻 Computer Lab</h2>
+            <div class="gallery">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="Assets/Computer Lab.png" alt="Computer Lab">
+                    <div class="image-label">Computer Lab</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="Assets/Computer Lab 1.png" alt="Computer Lab 1">
+                    <div class="image-label">Computer Lab - View 1</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="Assets/Computer Lab 2.png" alt="Computer Lab 2">
+                    <div class="image-label">Computer Lab - View 2</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Library Section -->
+        <div class="section">
+            <h2 class="section-title">📚 Library</h2>
+            <div class="gallery">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="Assets/Library.png" alt="Library">
+                    <div class="image-label">Library</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="Assets/Library 1.png" alt="Library 1">
+                    <div class="image-label">Library - View 1</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="Assets/Library 3.png" alt="Library 3">
+                    <div class="image-label">Library - View 2</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Maths Lab Section -->
+        <div class="section">
+            <h2 class="section-title">📐 Maths Lab</h2>
+            <div class="gallery">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="Assets/Maths Lab.png" alt="Maths Lab">
+                    <div class="image-label">Maths Lab</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="Assets/Maths Lab 1.png" alt="Maths Lab 1">
+                    <div class="image-label">Maths Lab - View 1</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="Assets/Maths Lab 2.png" alt="Maths Lab 2">
+                    <div class="image-label">Maths Lab - View 2</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Smart Classes Section -->
+        <div class="section">
+            <h2 class="section-title">🎓 Smart Classes</h2>
+            <div class="gallery">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="Assets/Smart Classes.png" alt="Smart Classes">
+                    <div class="image-label">Smart Classes</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="Assets/Smart Classes 1.png" alt="Smart Classes 1">
+                    <div class="image-label">Smart Classes - View 1</div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="Assets/Smart Classes 3.png" alt="Smart Classes 3">
+                    <div class="image-label">Smart Classes - View 2</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeLightbox()">&times;</button>
+            <img id="lightbox-img" src="" alt="">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 School Facilities Gallery | All images are property of the institution</p>
+    </footer>
+
+    <script>
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            document.getElementById('lightbox-img').src = img.src;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event && event.target.id !== 'lightbox') return;
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
