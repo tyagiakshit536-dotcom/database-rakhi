@@ -313,11 +313,8 @@
             </div>
         </div>
 
-        <!-- Other Activities Section -->
-        <div class="section">
-            <h2 class="section-title">🎉 Other Activities</h2>
-            <div class="gallery" id="other-activities-gallery"></div>
-        </div>
+        <!-- Activities Sections -->
+        <div id="activities-sections"></div>
     </div>
 
     <!-- Lightbox -->
@@ -346,148 +343,295 @@
             document.body.style.overflow = 'auto';
         }
 
-        const otherActivitiesImages = [
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.33 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.34 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.34 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.34 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.35 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.35 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.36 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.36 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.36 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.37 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.37 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.37 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.38 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.38 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.38 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.39 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.39 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.39 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.40 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.40 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.41 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.41 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.41 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.42 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.42 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.42 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.43 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.43 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.43 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.44 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.44 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.45 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.45 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.45 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.46 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.46 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.46 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.47 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.47 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.47 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.48 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.48 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.48 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.49 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.49 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.49 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.50 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.50 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.51 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.51 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.51 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.52 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.52 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.52 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.53 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.53 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.54 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.54 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.54 PM (3).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.54 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.55 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.55 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.55 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.56 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.56 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.57 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.57 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.57 PM (3).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.57 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.58 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.58 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.58 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.59 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.59 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.01.59 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.21.42 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.21.43 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.21.43 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.21.43 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.21.44 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.21.44 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.30 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.30 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.30 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.31 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.31 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.31 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.32 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.32 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.33 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.33 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.33 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.34 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.34 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.34 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.35 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.36 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.37 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.38 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.38 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.39 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.39 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.39 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.40 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.40 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.41 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.41 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.41 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.42 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.42 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.42 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.43 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.43 PM (2).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.43 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.44 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.44 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.45 PM (1).jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.45 PM.jpeg",
-            "Assets/Assets 2/WhatsApp Image 2026-05-05 at 9.39.46 PM.jpeg"
+        function formatLabelFromPath(src) {
+            const fileName = src.split('/').pop() || '';
+            let label = fileName.replace(/\.[^.]+$/, '');
+            label = label.replace(/[_-]+/g, ' ');
+            label = label.replace(/([a-zA-Z])(\d)/g, '$1 $2');
+            label = label.replace(/(\d)([a-zA-Z])/g, '$1 $2');
+            label = label.replace(/\s+/g, ' ').trim();
+            return label;
+        }
+
+        const activityCategories = [
+            {
+                title: "Activity",
+                images: [
+                    "Assets/Assets 2/Activity/Activity.jpeg",
+                    "Assets/Assets 2/Activity/Activity1.jpeg",
+                    "Assets/Assets 2/Activity/Activity2.jpeg",
+                    "Assets/Assets 2/Activity/Activity3.jpeg"
+                ]
+            },
+            {
+                title: "Annual Function",
+                images: [
+                    "Assets/Assets 2/Annual Function/Annual Function.jpeg",
+                    "Assets/Assets 2/Annual Function/Annual Function1.jpeg",
+                    "Assets/Assets 2/Annual Function/Annual Function10.jpeg",
+                    "Assets/Assets 2/Annual Function/Annual Function11.jpeg",
+                    "Assets/Assets 2/Annual Function/Annual Function12.jpeg",
+                    "Assets/Assets 2/Annual Function/Annual Function14.jpeg",
+                    "Assets/Assets 2/Annual Function/Annual Function15.jpeg",
+                    "Assets/Assets 2/Annual Function/Annual Function16.jpeg",
+                    "Assets/Assets 2/Annual Function/Annual Function2.jpeg",
+                    "Assets/Assets 2/Annual Function/Annual Function3.jpeg",
+                    "Assets/Assets 2/Annual Function/Annual Function4.jpeg",
+                    "Assets/Assets 2/Annual Function/Annual Function5.jpeg",
+                    "Assets/Assets 2/Annual Function/Annual Function6.jpeg",
+                    "Assets/Assets 2/Annual Function/Annual Function7.jpeg",
+                    "Assets/Assets 2/Annual Function/Annual Function8.jpeg",
+                    "Assets/Assets 2/Annual Function/Annual Function9.jpeg"
+                ]
+            },
+            {
+                title: "Assembly",
+                images: [
+                    "Assets/Assets 2/Assembly/Assembly.jpeg",
+                    "Assets/Assets 2/Assembly/Assembly1.jpeg",
+                    "Assets/Assets 2/Assembly/Assembly2.jpeg",
+                    "Assets/Assets 2/Assembly/Assembly3.jpeg"
+                ]
+            },
+            {
+                title: "Award",
+                images: [
+                    "Assets/Assets 2/Award/awar19.jpeg",
+                    "Assets/Assets 2/Award/Award.jpeg",
+                    "Assets/Assets 2/Award/Award1.jpeg",
+                    "Assets/Assets 2/Award/Award10.jpeg",
+                    "Assets/Assets 2/Award/Award11.jpeg",
+                    "Assets/Assets 2/Award/Award12.jpeg",
+                    "Assets/Assets 2/Award/Award13.jpeg",
+                    "Assets/Assets 2/Award/Award14.jpeg",
+                    "Assets/Assets 2/Award/Award15.jpeg",
+                    "Assets/Assets 2/Award/Award16.jpeg",
+                    "Assets/Assets 2/Award/Award17.jpeg",
+                    "Assets/Assets 2/Award/Award18.jpeg",
+                    "Assets/Assets 2/Award/Award19.jpeg",
+                    "Assets/Assets 2/Award/Award2.jpeg",
+                    "Assets/Assets 2/Award/Award20.jpeg",
+                    "Assets/Assets 2/Award/Award3.jpeg",
+                    "Assets/Assets 2/Award/Award4.jpeg",
+                    "Assets/Assets 2/Award/Award5.jpeg",
+                    "Assets/Assets 2/Award/Award6.jpeg",
+                    "Assets/Assets 2/Award/Award7.jpeg",
+                    "Assets/Assets 2/Award/Award8.jpeg",
+                    "Assets/Assets 2/Award/Award9.jpeg"
+                ]
+            },
+            {
+                title: "Campaign",
+                images: [
+                    "Assets/Assets 2/Campaign/Campaign.jpeg",
+                    "Assets/Assets 2/Campaign/Campaign1.jpeg"
+                ]
+            },
+            {
+                title: "Ceremony",
+                images: [
+                    "Assets/Assets 2/Ceremony/Ceremony.jpeg",
+                    "Assets/Assets 2/Ceremony/Ceremony1.jpeg",
+                    "Assets/Assets 2/Ceremony/Ceremony2.jpeg",
+                    "Assets/Assets 2/Ceremony/Ceremony3.jpeg"
+                ]
+            },
+            {
+                title: "Computer",
+                images: [
+                    "Assets/Assets 2/Computer/Computer.jpeg",
+                    "Assets/Assets 2/Computer/Computer1.jpeg",
+                    "Assets/Assets 2/Computer/Computer4.jpeg",
+                    "Assets/Assets 2/Computer/Computer5.jpeg"
+                ]
+            },
+            {
+                title: "Diwali",
+                images: [
+                    "Assets/Assets 2/Diwali/Diwali.jpeg",
+                    "Assets/Assets 2/Diwali/Diwali1.jpeg",
+                    "Assets/Assets 2/Diwali/Diwali10.jpeg",
+                    "Assets/Assets 2/Diwali/Diwali11.jpeg",
+                    "Assets/Assets 2/Diwali/Diwali2.jpeg",
+                    "Assets/Assets 2/Diwali/Diwali3.jpeg",
+                    "Assets/Assets 2/Diwali/Diwali4.jpeg",
+                    "Assets/Assets 2/Diwali/Diwali5.jpeg",
+                    "Assets/Assets 2/Diwali/Diwali6.jpeg",
+                    "Assets/Assets 2/Diwali/Diwali7.jpeg",
+                    "Assets/Assets 2/Diwali/Diwali8.jpeg",
+                    "Assets/Assets 2/Diwali/Diwali99.jpeg"
+                ]
+            },
+            {
+                title: "Exercise",
+                images: [
+                    "Assets/Assets 2/Exercise/Exercise.jpeg",
+                    "Assets/Assets 2/Exercise/Exercise1.jpeg",
+                    "Assets/Assets 2/Exercise/Exercise2.jpeg"
+                ]
+            },
+            {
+                title: "Extra Activity",
+                images: [
+                    "Assets/Assets 2/Extra Activity/Extra Activity.jpeg"
+                ]
+            },
+            {
+                title: "Independence Day",
+                images: [
+                    "Assets/Assets 2/Independence Day/Independence Day.jpeg",
+                    "Assets/Assets 2/Independence Day/Independence Day1.jpeg"
+                ]
+            },
+            {
+                title: "Life Skill",
+                images: [
+                    "Assets/Assets 2/Life Skill/Life Skill.jpeg"
+                ]
+            },
+            {
+                title: "Meditation",
+                images: [
+                    "Assets/Assets 2/Meditation/Meditation.jpeg"
+                ]
+            },
+            {
+                title: "Nature",
+                images: [
+                    "Assets/Assets 2/Nature/Nature.jpeg",
+                    "Assets/Assets 2/Nature/Nature2.jpeg",
+                    "Assets/Assets 2/Nature/Nature3.jpeg",
+                    "Assets/Assets 2/Nature/Nature4.jpeg",
+                    "Assets/Assets 2/Nature/Nature6.jpeg"
+                ]
+            },
+            {
+                title: "Play",
+                images: [
+                    "Assets/Assets 2/Play/Play.jpeg",
+                    "Assets/Assets 2/Play/Play1.jpeg"
+                ]
+            },
+            {
+                title: "Playing",
+                images: [
+                    "Assets/Assets 2/Playing/Playing.jpeg",
+                    "Assets/Assets 2/Playing/Playing1.jpeg",
+                    "Assets/Assets 2/Playing/Playing2.jpeg",
+                    "Assets/Assets 2/Playing/Playing5.jpeg",
+                    "Assets/Assets 2/Playing/Playing6.jpeg"
+                ]
+            },
+            {
+                title: "Pledge",
+                images: [
+                    "Assets/Assets 2/Pledge/Pledge.jpeg"
+                ]
+            },
+            {
+                title: "Praying",
+                images: [
+                    "Assets/Assets 2/Praying/Praying.jpeg",
+                    "Assets/Assets 2/Praying/Praying1.jpeg"
+                ]
+            },
+            {
+                title: "Skill",
+                images: [
+                    "Assets/Assets 2/Skill/Skill.jpeg",
+                    "Assets/Assets 2/Skill/Skill1.jpeg",
+                    "Assets/Assets 2/Skill/Skill2.jpeg"
+                ]
+            },
+            {
+                title: "Smart Class",
+                images: [
+                    "Assets/Assets 2/Smart Class/Smart Class.jpeg",
+                    "Assets/Assets 2/Smart Class/Smart Class1.jpeg",
+                    "Assets/Assets 2/Smart Class/Smart Class2.jpeg"
+                ]
+            },
+            {
+                title: "Teaching",
+                images: [
+                    "Assets/Assets 2/Teaching/Teaching.jpeg"
+                ]
+            },
+            {
+                title: "Training",
+                images: [
+                    "Assets/Assets 2/Training/Training.jpeg",
+                    "Assets/Assets 2/Training/Training1.jpeg",
+                    "Assets/Assets 2/Training/Training10.jpeg",
+                    "Assets/Assets 2/Training/Training11.jpeg",
+                    "Assets/Assets 2/Training/Training2.jpeg",
+                    "Assets/Assets 2/Training/Training3.jpeg",
+                    "Assets/Assets 2/Training/Training4.jpeg",
+                    "Assets/Assets 2/Training/Training5.jpeg",
+                    "Assets/Assets 2/Training/Training6.jpeg",
+                    "Assets/Assets 2/Training/Training7.jpeg",
+                    "Assets/Assets 2/Training/Training8.jpeg",
+                    "Assets/Assets 2/Training/Training9.jpeg"
+                ]
+            },
+            {
+                title: "Workshop",
+                images: [
+                    "Assets/Assets 2/Workshop/Workshop.jpeg",
+                    "Assets/Assets 2/Workshop/Workshop1.jpeg",
+                    "Assets/Assets 2/Workshop/Workshop2.jpeg"
+                ]
+            },
+            {
+                title: "Yoga",
+                images: [
+                    "Assets/Assets 2/Yoga/Yoga.jpeg",
+                    "Assets/Assets 2/Yoga/Yoga1.jpeg",
+                    "Assets/Assets 2/Yoga/Yoga2.jpeg",
+                    "Assets/Assets 2/Yoga/Yoga3.jpeg",
+                    "Assets/Assets 2/Yoga/Yoga4.jpeg",
+                    "Assets/Assets 2/Yoga/Yoga5.jpeg"
+                ]
+            }
         ];
 
-        const otherActivitiesGallery = document.getElementById('other-activities-gallery');
-        if (otherActivitiesGallery) {
-            otherActivitiesImages.forEach(function(src, index) {
-                const item = document.createElement('div');
-                item.className = 'gallery-item';
-                item.addEventListener('click', function() {
-                    openLightbox(item);
+        const activitiesContainer = document.getElementById('activities-sections');
+        if (activitiesContainer) {
+            activityCategories.forEach(function(category) {
+                const section = document.createElement('div');
+                section.className = 'section';
+
+                const title = document.createElement('h2');
+                title.className = 'section-title';
+                title.textContent = category.title;
+
+                const gallery = document.createElement('div');
+                gallery.className = 'gallery';
+
+                category.images.forEach(function(src) {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    item.addEventListener('click', function() {
+                        openLightbox(item);
+                    });
+
+                    const img = document.createElement('img');
+                    img.src = src;
+                    const labelText = formatLabelFromPath(src);
+                    img.alt = labelText;
+
+                    const label = document.createElement('div');
+                    label.className = 'image-label';
+                    label.textContent = labelText;
+
+                    item.appendChild(img);
+                    item.appendChild(label);
+                    gallery.appendChild(item);
                 });
 
-                const img = document.createElement('img');
-                img.src = src;
-                img.alt = "Other Activity " + (index + 1);
-
-                const label = document.createElement('div');
-                label.className = 'image-label';
-                label.textContent = "Other Activity " + (index + 1);
-
-                item.appendChild(img);
-                item.appendChild(label);
-                otherActivitiesGallery.appendChild(item);
+                section.appendChild(title);
+                section.appendChild(gallery);
+                activitiesContainer.appendChild(section);
             });
         }
 
